@@ -21,11 +21,32 @@ function App() {
 
       <div className="sneakers d-flex flex-wrap">
         
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card 
+          title="Nike nike 5"
+          price={3888}
+          imageUrl="/img/sneakers/1.jpg"
+        />
+
+        <Card 
+          title="Nike nike 5
+          Nike nike 5"
+          price={3888}
+          imageUrl="/img/sneakers/2.jpg"
+        />
+
+        <Card 
+          title="Nike nike 5"
+          price={3888}
+          imageUrl="/img/sneakers/3.jpg"
+        />
+
+        <Card 
+          title="Nike nike 5
+          Nike nike 5"
+          price={3888}
+          imageUrl="/img/sneakers/4.jpg"
+        />
+
       </div>
     </div>
   </div>
