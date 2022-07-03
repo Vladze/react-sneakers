@@ -1,30 +1,23 @@
-function Drawer() {
+function Drawer({onClickClose, items = []}) {
     return (
-    <div className="overlay" style={ {display: "none"} }>
+    <div className="overlay">
       <div className="drawer d-flex flex-column">
-        <h2 className="d-flex justify-between">Корзина <img className="cu-p" width={34} src="/img/remove.svg" alt="close" /></h2>
+        <h2 className="d-flex justify-between">
+          Корзина <img onClick={onClickClose} className="cu-p" width={34} src="/img/remove.svg" alt="close" />
+        </h2>
 
         <div className="items flex">
-          <div className="itemCart d-flex justify-between align-center">
-            <img className="mr-20" heigth={70} width={70} src="/img/sneakers/1.jpg" alt="shoes" />
-            <div className="mr-30">
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>2449 грн.</b>
+          {items.map(item => {
+            return <div key={items.id} className="itemCart d-flex justify-between align-center">
+              <img className="mr-20" heigth={70} width={70} src={item.imageUrl} alt="shoes" />
+              <div className="mr-30">
+                <p>{item.title}</p>
+                <b>{item.price} грн.</b>
+              </div>
+              <img className="remove_Btn" src="/img/remove.svg" alt="remove"></img>
             </div>
-            <img className="remove_Btn" src="/img/remove.svg" alt="remove"></img>
-          </div>
-
-          <div className="itemCart d-flex justify-between align-center">
-            <img className="mr-20" heigth={70} width={70} src="/img/sneakers/2.jpg" alt="shoes" />
-            <div className="mr-20">
-              <p>Мужские Кроссовки Nike Blazer Mid Suede</p>
-              <b>2449 грн.</b>
-            </div>
-            <img className="remove_Btn" src="/img/remove.svg" alt="remove"></img>
-          </div>
-          
-
-          
+          })}
+        
         </div>
         
         <div className="cartTotalBlock">
