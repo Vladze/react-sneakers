@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
+import axios from "axios";
 
 
 function App() {
@@ -13,12 +14,18 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [cartIsOpened, setCartIsOpened] = useState(false);
   const [ordersItems, setOrderItems] = useState([]);
+  const [loadingCard, setLoadingCard] = useState(true);
 
 
   React.useEffect(() => {
-    fetch("https://62c1ab292af60be89ecba5d3.mockapi.io/items")
-      .then(res => {return res.json()})
-      .then(json => setItems(json));
+    async function fetchData(){
+      const cardsResponse= await axios.get("https://62c1ab292af60be89ecba5d3.mockapi.io/items");
+      
+      setItems(cardsResponse.data);
+      setLoadingCard(false)
+    }
+
+    fetchData();
   }, []);
   
   function onAddToCart(obj){
@@ -84,6 +91,7 @@ function App() {
         onAddToCart={onAddToCart}
         onChangeSearchInput={onChangeSearchInput}
         onClickFavorite={onClickFavorite}
+        loading={loadingCard}
       />
     </Route>
     <Route path="/favorites" exact>

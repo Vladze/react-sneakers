@@ -1,6 +1,25 @@
 import Card from "../components/Card"
 
-function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchInput, onClickFavorite} ) {
+function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchInput, onClickFavorite, loading=false} ) {
+    
+    const renderCard = () => {
+      return items
+      .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+      .map(item => {
+      return <Card key={item.id}
+        id={item.key}
+        title={item.title} 
+        price={item.price}
+        imageUrl={item.imageUrl}
+        onPlus={() => onAddToCart(item)}
+        isFavorite={item.isFavorite}
+        inCart={item.inCart}
+        onClickFavorite={() => onClickFavorite(item.id)}
+        loading={loading}
+      />
+        })
+    }
+    
     return <div className="content p-50">
       <div className="mb-40 d-flex justify-between align-center">
         <h1>{searchValue ? <span>Поиск по запросу: "{searchValue}"</span> : "Кроссовки"} </h1>
@@ -12,20 +31,9 @@ function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchI
       </div>
 
       <div className="sneakers d-flex flex-wrap">
-        {items
-          .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map(item => {
-          return <Card key={item.id}
-            id={item.key}
-            title={item.title} 
-            price={item.price}
-            imageUrl={item.imageUrl}
-            onPlus={() => onAddToCart(item)}
-            isFavorite={item.isFavorite}
-            inCart={item.inCart}
-            onClickFavorite={() => onClickFavorite(item.id)}
-          />
-            })}
+        {loading 
+        ? [...Array(10)].map((item, index) => <Card key={index}/>)
+        : renderCard()}
       </div>
     </div>
 }

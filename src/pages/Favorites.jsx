@@ -27,6 +27,7 @@ function Favorites( {items, searchValue, setSearchValue, onAddToCart, onChangeSe
             isFavorite={item.isFavorite}
             inCart={item.inCart}
             onClickFavorite={() => onClickFavorite(item.id)}
+            loading={false}
         />  }
         })}
   </div>

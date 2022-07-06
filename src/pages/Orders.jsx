@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Orders({items, searchValue, setSearchValue, onAddToCart, onChangeSearchInput, onClickFavorite}) {
+function Orders({items, searchValue, setSearchValue, onChangeSearchInput}) {
     return <div className="content p-50">
         <div className="mb-40 d-flex justify-between align-center">
         <h1>{searchValue ? <span>Поиск по запросу: "{searchValue}"</span> : "Мои заказы"} </h1>

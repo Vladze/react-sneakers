@@ -18,12 +18,12 @@ function Header({onClickCart}) {
           <span>1205 грн.</span>
         </li>
         <li className="mr-30 cu-p">
-          <Link to="/favorites" exact>
+          <Link to="/favorites" >
             <img width={18} height={18} src="/img/heart.svg" alt="heart" />
           </Link>
         </li>
         <li className="cu-p">
-          <Link to="/orders" exact>
+          <Link to="/orders" >
             <img width={18} height={18} src="/img/user.svg" alt="user" />
           </Link>
         </li>
