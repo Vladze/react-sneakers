@@ -1,12 +1,22 @@
+import { useContext } from "react";
 import EmptyCart from "./EmptyCart";
+import AppContext  from "../context";
 
-function Drawer({onClickClose, onClickRemove, onClickOrder, items = []}) {
-    
+function Drawer({ onClickRemove, onClickOrder, items = []}) {
+  
+  const { isOrdered, setIsOrdered, setCartIsOpened } = useContext(AppContext);
+
+  function closeCart() {
+    setCartIsOpened(false);
+    setIsOrdered(false);
+  }
+
+
   return (
     <div className="overlay">
       <div className="drawer d-flex flex-column">
         <h2 className="d-flex justify-between">
-          Корзина <img onClick={onClickClose} className="cu-p" width={34} src="/img/remove.svg" alt="close" />
+          Корзина <img onClick={closeCart} className="cu-p" width={34} src="/img/remove.svg" alt="close" />
         </h2>
         {items.length > 0 
         ? <>
@@ -42,7 +52,9 @@ function Drawer({onClickClose, onClickRemove, onClickOrder, items = []}) {
           </div>
         </>
         : <EmptyCart
-            onClickClose={onClickClose}
+            imgURL={isOrdered ? "img/list_mark.png" : "/img/box.png"}
+            title={isOrdered ? "Заказ оформлен!" : "Корзина пустая"}
+            desc={isOrdered ? "Ваш заказ #1843 скоро будет передан курьерской доставке" :"Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}
           />}
       </div>
     </div>

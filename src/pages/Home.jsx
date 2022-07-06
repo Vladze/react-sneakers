@@ -1,6 +1,6 @@
 import Card from "../components/Card"
 
-function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchInput, onClickFavorite, loading=false} ) {
+function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchInput, onClickFavorite, isLoading=false} ) {
     
     const renderCard = () => {
       return items
@@ -15,7 +15,7 @@ function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchI
         isFavorite={item.isFavorite}
         inCart={item.inCart}
         onClickFavorite={() => onClickFavorite(item.id)}
-        loading={loading}
+        isLoading={isLoading}
       />
         })
     }
@@ -31,7 +31,7 @@ function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchI
       </div>
 
       <div className="sneakers d-flex flex-wrap">
-        {loading 
+        {isLoading 
         ? [...Array(10)].map((item, index) => <Card key={index}/>)
         : renderCard()}
       </div>

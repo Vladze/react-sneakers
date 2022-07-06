@@ -1,7 +1,7 @@
 import styles from "./Card.module.scss";
 import ContentLoader from "react-content-loader"
 
-function Card({id, title, price, imageUrl, onPlus, isFavorite, inCart, onClickFavorite, loading=true}) {
+function Card({id, title, price, imageUrl, onPlus, isFavorite, inCart, onClickFavorite, isLoading=true}) {
     
     function onClickPlus() {
         onPlus();
@@ -10,7 +10,7 @@ function Card({id, title, price, imageUrl, onPlus, isFavorite, inCart, onClickFa
   
     return (
     <div className={styles.card}>
-         {loading
+         {isLoading
          ? <ContentLoader 
          speed={4}
          width={160}
@@ -23,7 +23,7 @@ function Card({id, title, price, imageUrl, onPlus, isFavorite, inCart, onClickFa
          <rect x="1" y="125" rx="3" ry="3" width="160" height="15" /> 
          <rect x="0" y="150" rx="3" ry="3" width="100" height="15" /> 
          <rect x="0" y="190" rx="4" ry="4" width="80" height="24" /> 
-         <rect x="124" y="182" rx="6" ry="6" width="32" height="32" />
+         <rect x="128" y="182" rx="6" ry="6" width="30" height="30" />
         </ContentLoader>
         : <>
             <div className={styles.favorite} onClick={onClickFavorite}>
