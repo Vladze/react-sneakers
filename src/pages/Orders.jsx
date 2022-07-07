@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 function Orders({items, searchValue, setSearchValue, onChangeSearchInput}) {
-    return <div className="content p-50">
+    return <div className="content">
         <div className="mb-40 d-flex justify-between align-center">
         <h1>{searchValue ? <span>Поиск по запросу: "{searchValue}"</span> : "Мои заказы"} </h1>
         <div className="search-block">
@@ -12,7 +12,7 @@ function Orders({items, searchValue, setSearchValue, onChangeSearchInput}) {
         </div>
 
         {items.length > 0 
-        ? <div className="orderCards d-flex">
+        ? <div className="orderCards d-flex flex-wrap">
             {items.map(item => {
                 return <div className="orderCard">
                     <div>

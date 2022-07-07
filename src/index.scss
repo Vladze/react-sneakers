@@ -38,6 +38,7 @@ header {
 
 .content {
  min-height: 980px;
+ padding: 50px 50px 0px;
   
   h1 {
     margin: 0;
@@ -118,6 +119,8 @@ header {
   .items {
     overflow: auto;
     margin-bottom: 20px;
+    margin-right: -20px;
+    padding-right: 5px;
   }
 
   .cartEmpty {
@@ -311,4 +314,15 @@ header {
       }
     }
   }
+}
+
+footer {
+  padding: 20px 45px 40px;
+  border-bottom: 1px solid #eaeaea;
+  h3,
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+  border-top: 1px solid #eaeaea;
 }

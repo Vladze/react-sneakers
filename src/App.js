@@ -7,6 +7,7 @@ import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
 import axios from "axios";
 import AppContext from "./context";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
   }
 
   function onAddOrder(){
-    setOrderItems(cartItems);
+    setOrderItems([...ordersItems, ...cartItems]);
     setCartItems([]);
     setIsOrdered(true);
     setItems(items.map(item => {
@@ -82,7 +83,7 @@ function App() {
 
 
   return (
-    <AppContext.Provider value={ { setCartIsOpened, isOrdered, setIsOrdered}}>
+    <AppContext.Provider value={ { cartItems, setCartIsOpened, isOrdered, setIsOrdered}}>
     <div className="wrapper clear">
       {cartIsOpened && <Drawer items={cartItems} onClickOrder={() => onAddOrder()}  onClickRemove={(id) => removeFromCart(id)} />}
 
@@ -119,7 +120,7 @@ function App() {
           onClickFavorite={onClickFavorite}  
         />
       </Route>
-    
+      <Footer />
     </div>
       </AppContext.Provider>
   )

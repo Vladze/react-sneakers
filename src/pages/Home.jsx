@@ -20,7 +20,7 @@ function Home( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchI
         })
     }
     
-    return <div className="content p-50">
+    return <div className="content">
       <div className="mb-40 d-flex justify-between align-center">
         <h1>{searchValue ? <span>Поиск по запросу: "{searchValue}"</span> : "Кроссовки"} </h1>
         <div className="search-block">

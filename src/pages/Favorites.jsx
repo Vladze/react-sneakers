@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Card from "../components/Card";
 
 function Favorites( {items, searchValue, setSearchValue, onAddToCart, onChangeSearchInput, onClickFavorite} ) {
-  return <div className="content p-50">
+  return <div className="content">
     <div className="mb-40 d-flex justify-between align-center">
       <h1>{searchValue ? <span>Поиск по запросу: "{searchValue}"</span> : "Избранное"} </h1>
       <div className="search-block">
@@ -27,7 +27,7 @@ function Favorites( {items, searchValue, setSearchValue, onAddToCart, onChangeSe
             isFavorite={item.isFavorite}
             inCart={item.inCart}
             onClickFavorite={() => onClickFavorite(item.id)}
-            loading={false}
+            isLoading={false}
         />  }
         })}
   </div>

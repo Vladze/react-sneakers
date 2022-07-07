@@ -4,7 +4,8 @@ import AppContext  from "../context";
 
 function Drawer({ onClickRemove, onClickOrder, items = []}) {
   
-  const { isOrdered, setIsOrdered, setCartIsOpened } = useContext(AppContext);
+  const { isOrdered, setIsOrdered, setCartIsOpened, cartItems } = useContext(AppContext);
+  const total = cartItems.reduce((prev, item) => prev + Number(item.price), 0);
 
   function closeCart() {
     setCartIsOpened(false);
@@ -37,12 +38,12 @@ function Drawer({ onClickRemove, onClickOrder, items = []}) {
               <li className="d-flex align-end mb-20">
                 <span>Итого:</span>
                 <div></div>
-                <b>11 232 грн.</b>
+                <b>{total} грн.</b>
               </li>
               <li className="d-flex align-end mb-20">
-                <span>На ЗСУ 5%:</span>
+                <span>На ЗСУ 10%:</span>
                 <div></div>
-                <b>675 грн.</b>
+                <b>{(total / 100 * 10).toFixed(2)} грн.</b>
               </li>
             </ul>
             <button onClick={onClickOrder} className="greenButton">
