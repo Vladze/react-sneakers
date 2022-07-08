@@ -83,9 +83,9 @@ function App() {
 
 
   return (
-    <AppContext.Provider value={ { cartItems, setCartIsOpened, isOrdered, setIsOrdered}}>
+    <AppContext.Provider value={ { cartItems, setCartItems, isOrdered, setIsOrdered, cartIsOpened, setCartIsOpened}}>
     <div className="wrapper clear">
-      {cartIsOpened && <Drawer items={cartItems} onClickOrder={() => onAddOrder()}  onClickRemove={(id) => removeFromCart(id)} />}
+      <Drawer items={cartItems} onClickOrder={() => onAddOrder()}  onClickRemove={(id) => removeFromCart(id)} />
 
       <Header onClickCart={() => setCartIsOpened(true)} />
 

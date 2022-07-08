@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import EmptyCart from "./EmptyCart";
 import AppContext  from "../context";
+import { useCart } from "../hooks/useCart";
+
 
 function Drawer({ onClickRemove, onClickOrder, items = []}) {
   
-  const { isOrdered, setIsOrdered, setCartIsOpened, cartItems } = useContext(AppContext);
-  const total = cartItems.reduce((prev, item) => prev + Number(item.price), 0);
+  const { isOrdered, setIsOrdered, cartIsOpened, setCartIsOpened, cartItems } = useContext(AppContext);
+  const { totalPrice } = useCart();
 
   function closeCart() {
     setCartIsOpened(false);
@@ -14,7 +16,7 @@ function Drawer({ onClickRemove, onClickOrder, items = []}) {
 
 
   return (
-    <div className="overlay">
+    <div className={`${'overlay'} ${cartIsOpened ? 'overlayVisible' : ""}`}>
       <div className="drawer d-flex flex-column">
         <h2 className="d-flex justify-between">
           Корзина <img onClick={closeCart} className="cu-p" width={34} src="/img/remove.svg" alt="close" />
@@ -38,12 +40,12 @@ function Drawer({ onClickRemove, onClickOrder, items = []}) {
               <li className="d-flex align-end mb-20">
                 <span>Итого:</span>
                 <div></div>
-                <b>{total} грн.</b>
+                <b>{totalPrice} грн.</b>
               </li>
               <li className="d-flex align-end mb-20">
                 <span>На ЗСУ 10%:</span>
                 <div></div>
-                <b>{(total / 100 * 10).toFixed(2)} грн.</b>
+                <b>{(totalPrice / 100 * 10).toFixed(2)} грн.</b>
               </li>
             </ul>
             <button onClick={onClickOrder} className="greenButton">

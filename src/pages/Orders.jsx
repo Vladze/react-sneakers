@@ -14,7 +14,7 @@ function Orders({items, searchValue, setSearchValue, onChangeSearchInput}) {
         {items.length > 0 
         ? <div className="orderCards d-flex flex-wrap">
             {items.map(item => {
-                return <div className="orderCard">
+                return <div key={item.id} className="orderCard">
                     <div>
                         <img width={150} src={item.imageUrl} alt="shoes"/>
                     </div>
